@@ -3,7 +3,7 @@
 	<!DOCTYPE html>
 	<html lang="en">
 		<head>
-			<link href="{{ asset('styles3.css') }}" rel="stylesheet" />
+			<link href="{{ asset('assets/styles3.css') }}" rel="stylesheet" />
 			<link rel="icon" type="image/png" href="{{ asset('ioicone.png') }}">
 			<title>ActuAI - @yield('titre')</title>
 		</head>
@@ -47,7 +47,7 @@
 			</footer>
 			
 			<!-- Core theme JS-->
-			<script src="{{ asset('scripts.js') }}"></script>
+			<script src="{{ asset('assets/scripts.js') }}"></script>
 		</body>
 	</html>
 	

@@ -26,16 +26,16 @@
                         @csrf
                     
                         <div class="form-floating mb-3">
-                            <input class="form-control @error('email') is-invalid @enderror" id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
-                            <label for="email">Adresse email :</label>
+                            <input class="form-control @error('email') is-invalid @enderror" id="email" type="email" name="email" value="johndoe@example.com" required autofocus>
+                            <label for="email">Adresse email : johndoe@example.com</label>
                             @error('email')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     
                         <div class="form-floating mb-3">
-                            <input class="form-control @error('mot_de_passe') is-invalid @enderror" id="mot_de_passe" type="password" name="mot_de_passe" required>
-                            <label for="mot_de_passe">Mot de passe :</label>
+                            <input class="form-control @error('mot_de_passe') is-invalid @enderror" id="mot_de_passe" type="password" name="mot_de_passe" value="mdp123" required>
+                            <label for="mot_de_passe">Mot de passe : mdp123</label>
                             @error('mot_de_passe')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

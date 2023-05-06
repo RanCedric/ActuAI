@@ -3,8 +3,8 @@
 	<!DOCTYPE html>
 	<html lang="en">
 		<head>
-			<link href="{{ asset('assets/styles3.css') }}" rel="stylesheet" />
-			<link rel="icon" type="image/png" href="{{ asset('ioicone.png') }}">
+			<link href="{{ secure_asset('assets/styles3.css') }}" rel="stylesheet" />
+			<link rel="icon" type="image/png" href="{{ secure_asset('ioicone.png') }}">
 			<title>ActuAI - @yield('titre')</title>
 		</head>
 		<body>
@@ -47,7 +47,7 @@
 			</footer>
 			
 			<!-- Core theme JS-->
-			<script src="{{ asset('assets/scripts.js') }}"></script>
+			<script src="{{ secure_asset('assets/scripts.js') }}"></script>
 		</body>
 	</html>
 	

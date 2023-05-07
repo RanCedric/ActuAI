@@ -1,7 +1,7 @@
 @extends('template.temp') 
 @section('titre', 'Ajout') @section('BODY')
   
-<script src="{{ secure_asset('ckeditor.js') }}"></script>
+<script src="{{ asset('ckeditor.js') }}"></script>
 
 <!-- Page Header-->
 <header class="masthead" style="background-image: url('{{ asset("img/33.jpg") }}')">

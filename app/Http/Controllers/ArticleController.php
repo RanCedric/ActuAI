@@ -4,35 +4,56 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class ArticleController extends Controller
 {
-    public function saveArticle(Request $request)
+
+public function saveArticle(Request $request)
 {
-    $request->validate([
-        'titre' => 'required|unique:articles',
+    $validatedData = $request->validate([
+        'titre' => 'required|max:255',
         'contenu' => 'required',
-        'image' => 'image|max:12288', // Taille maximale de 12 Mo
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ]);
 
-    $article = new Article();
-    $article->titre = $request->titre;
-    $article->contenu = $request->contenu;
-    $auteur = $request->session()->get('auteur');
-    $article->auteur_id = $auteur->id;
+    // Récupérer le fichier image depuis la requête
+    $file = $request->file('image');
 
-    // Gestion de l'image
-    if ($request->hasFile('image')) {
-        $image = $request->file('image');
-        $nom_image = time() . '_' . str_replace(' ', '_', $image->getClientOriginalName());
-        $image->move(public_path('images'), $nom_image);
-        $article->image = $nom_image;
+    // Créer une instance de GuzzleHttp\Client
+    $client = new Client();
+
+    try {
+        // Envoyer une requête POST pour héberger l'image sur un serveur tiers
+        $response = $client->post('https://api.imgur.com/3/image', [
+            'multipart' => [
+                [
+                    'name'     => 'image',
+                    'contents' => fopen($file->getPathname(), 'r'),
+                    'filename' => $file->getClientOriginalName()
+                ],
+            ],
+            'headers' => [
+                'Authorization' => 'Bearer ' . env('API_KEY'),
+            ],
+        ]);
+
+        // Récupérer l'URL de l'image hébergée depuis la réponse de la requête
+        $imageUrl = $response->getBody()->getContents();
+
+        // Enregistrer l'article avec l'URL de l'image
+        $article = new Article;
+        $article->titre = $validatedData['titre'];
+        $article->contenu = $validatedData['contenu'];
+        $article->image = $imageUrl;
+        $article->save();
+
+        return redirect('/')->with('success', 'L\'article a été créé avec succès.');
+    } catch (\Exception $e) {
+        return redirect('/')->with('error', 'Une erreur s\'est produite lors de la création de l\'article : ' . $e->getMessage());
     }
-
-    $article->save();
-
-    return redirect()->route('acceuilAuteur')->with('success', 'Article ajouté avec succès');
 }
+
 
     public function edit(Article $article)
 {

@@ -3,6 +3,8 @@
 	<!DOCTYPE html>
 	<html lang="en">
 		<head>
+			{{-- google --}}
+			<meta name="google-site-verification" content="dll6V8fXchqC6dEKYzRwhfcNnG21fXbtOGr3IPwC6F4" />
 			{{-- : indique l'encodage de caractères utilisé sur la page. --}}
 			<meta charset="UTF-8">
 			{{-- permet de définir le viewport (zone d'affichage) pour les appareils mobiles. --}}

@@ -35,3 +35,23 @@ Route::get('/creerarticle', function () {
 })->name('creerArticle');
 
 Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('deleteArticle');
+
+Route::get('/articles/image/{id}', [ArticleController::class, 'afficherImage'])->name('article.image');
+
+
+// Route::post('/image', function (Illuminate\Http\Request $request) {
+//     // Valider les données du formulaire
+//     $request->validate([
+//         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validation de l'image
+//     ]);
+
+//     // Convertir l'image en base64
+//     $image = $request->file('image');
+//     $base64_image = base64_encode(file_get_contents($image));
+
+//     // Afficher la base64 dans une balise label
+//     echo "<label>$base64_image</label>";
+
+//     // Reconvertir la base64 en image et l'afficher dans une balise img
+//     echo '<img src="data:'.$image->getClientMimeType().';base64,'.$base64_image.'">';
+// })->name('image');

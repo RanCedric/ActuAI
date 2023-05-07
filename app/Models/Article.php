@@ -15,7 +15,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $titre
  * @property string $contenu
- * @property string|null $image
+ * @property text|null $image
+ * @property string|null $image_type
  * @property int|null $auteur_id
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -36,6 +37,7 @@ class Article extends Model
 		'titre',
 		'contenu',
 		'image',
+		'image_type',
 		'auteur_id'
 	];
 

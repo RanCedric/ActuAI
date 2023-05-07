@@ -36,7 +36,7 @@
                     <div class="post-preview">
                         <a href="{{ route('modifierArticle', ['article' => $article]) }}">
                             <h2 class="post-title">{{ $article->titre }}</h2>
-                            <img src="{{ asset("images/$article->image") }}" alt="Image de l'article">
+                            <img src="{{ asset(route('article.image', ['id' => $article->id])) }}" alt="Image de l'article">
                             <h3 class="post-subtitle">{!! Str::words($article->contenu, 20, '...') !!}</h3>
                         </a>
                         <p class="post-meta">

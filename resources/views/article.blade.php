@@ -3,7 +3,9 @@
 
 @section('BODY')
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('{{ asset("images/$article->image") }}')">
+        <header class="masthead" style="background-image: url('{{ asset(route('article.image', ['id' => $article->id])) }}')">
+
+        {{-- <header class="masthead" style="background-image: url('{{ asset("images/$article->image") }}')"> --}}
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
@@ -28,8 +30,7 @@
                         {!! $article->contenu !!}
                     </div>
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <img src="{{ asset("images/$article->image") }}" alt="{{ $article->titre }}" class="img-fluid">
-                    
+                        <img src="{{ asset(route('article.image', ['id' => $article->id])) }}" class="img-fluid" alt="{{ $article->titre }}" />
                     </div>
                     
                 </div>

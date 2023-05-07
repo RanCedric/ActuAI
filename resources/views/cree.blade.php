@@ -33,7 +33,7 @@
                         </div>
                     
                         <div class="form-floating mb-3">
-                            <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                            <input type="file" class="form-control" id="image" name="image" accept="image/jpeg">
                         </div>
 
                         <div class="form-floating mb-3">

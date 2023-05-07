@@ -1,3 +1,5 @@
+
+
 @extends('template.temp') 
 @section('titre', 'Acceuil') 
 
@@ -34,7 +36,10 @@
             <div class="post-preview">
                 <a href="{{ route('article.show', ['article' => $article]) }}">
                     <h2 class="post-title">{{ $article->titre }}</h2>
-                    <img src="{{ asset("images/$article->image") }}" alt="Image de l'article">
+                    {{-- <img src="{{ asset("images/$article->image") }}" alt="Image de l'article"> --}}
+                    @if ($article->image)
+                    <img src="{{ asset(route('article.image', ['id' => $article->id])) }}" alt="Image">
+                    @endif
                     <h3 class="post-subtitle">{!! Str::words($article->contenu, 20, '...') !!}</h3>
                 </a>
                 <p class="post-meta">
@@ -56,6 +61,11 @@
 
             
                     
-            
+{{-- 
+<form action="{{ route('image') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+<input type="file" name="image">
+<input type="submit" value="Envoyer">
+</form> --}}
 
 @endsection

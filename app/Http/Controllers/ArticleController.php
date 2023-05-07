@@ -4,56 +4,38 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
-use GuzzleHttp\Client;
 
 class ArticleController extends Controller
 {
 
-public function saveArticle(Request $request)
-{
-    $validatedData = $request->validate([
-        'titre' => 'required|max:255',
-        'contenu' => 'required',
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    ]);
-
-    // Récupérer le fichier image depuis la requête
-    $file = $request->file('image');
-
-    // Créer une instance de GuzzleHttp\Client
-    $client = new Client();
-
-    try {
-        // Envoyer une requête POST pour héberger l'image sur un serveur tiers
-        $response = $client->post('https://api.imgur.com/3/image', [
-            'multipart' => [
-                [
-                    'name'     => 'image',
-                    'contents' => fopen($file->getPathname(), 'r'),
-                    'filename' => $file->getClientOriginalName()
-                ],
-            ],
-            'headers' => [
-                'Authorization' => 'Bearer ' . env('API_KEY'),
-            ],
+    public function saveArticle(Request $request)
+    {
+        $validatedData = $request->validate([
+            'titre' => 'required|max:255',
+            'contenu' => 'required',
+            'image' => 'required|image|mimes:jpg|max:2048',
         ]);
 
-        // Récupérer l'URL de l'image hébergée depuis la réponse de la requête
-        $imageUrl = $response->getBody()->getContents();
+        // Récupérer le fichier image depuis la requête
+        $file = $request->file('image');
 
-        // Enregistrer l'article avec l'URL de l'image
+        // Déterminer l'extension du fichier
+        $extension = $file->getClientOriginalExtension();
+
+        // Enregistrer l'image dans la base de données
         $article = new Article;
         $article->titre = $validatedData['titre'];
         $article->contenu = $validatedData['contenu'];
-        $article->image = $imageUrl;
+        $article->image_type = $extension;
+        $article->image = base64_encode(file_get_contents($file)); // Encodage de l'image en base64
+
+        // Ajouter l'ID de l'auteur à l'article
+        $article->auteur_id = session('auteur')->id;
+
         $article->save();
-
-        return redirect('/')->with('success', 'L\'article a été créé avec succès.');
-    } catch (\Exception $e) {
-        return redirect('/')->with('error', 'Une erreur s\'est produite lors de la création de l\'article : ' . $e->getMessage());
+        //echo '<img src="data:'.$article->image_type.';base64,'.$article->image.'">';
+        return redirect('/accueil-auteur')->with('success', 'L\'article a été créé avec succès.');
     }
-}
-
 
     public function edit(Article $article)
 {
@@ -91,6 +73,29 @@ public function destroy($id)
     $article->delete();
     return redirect()->route('acceuilAuteur');
 }
+
+    public function afficherImage($id)
+    {
+        $article = Article::findOrFail($id);
+
+        // Vérifier si l'image existe
+        if (!$article->image) {
+            abort(404);
+        }
+
+        // Récupérer le contenu de l'image depuis la base de données
+        $imageData = base64_decode($article->image); // Décodage de l'image base64
+
+        // Définir les en-têtes de réponse
+        $headers = [
+            'Content-Type' => $article->image_type,
+            'Content-Length' => strlen($imageData),
+            'Cache-Control' => 'public, max-age=86400',
+        ];
+
+        // Renvoyer la réponse
+        return response($imageData, 200, $headers);
+    }
 
 
 }

@@ -8,7 +8,7 @@
 <script src="{{ asset('ckeditor.js') }}"></script>
 
 <!-- Page Header-->
-<header class="masthead" style="background-image: url('{{ asset("img/33.jpg") }}')">
+<header class="masthead" style="background-image: url('{{ asset(route('article.image', ['id' => $article->id])) }}')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
@@ -37,7 +37,7 @@
                             <input class="form-control" id="titre" name="titre" value="{{ $article->titre }}" required autofocus>
                             <label for="titre">Titre</label>
                         </div>
-                    
+                        
                         <div class="form-floating mb-3">
                             <label for="">Contenu</label>
                             <textarea id="contenu" name="contenu">{{ $article->contenu }}</textarea>

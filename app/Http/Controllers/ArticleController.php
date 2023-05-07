@@ -13,7 +13,7 @@ class ArticleController extends Controller
         $validatedData = $request->validate([
             'titre' => 'required|max:255',
             'contenu' => 'required',
-            'image' => 'required|image|mimes:jpg|max:2048',
+            'image' => 'required|image|mimes:jpg|max:5000',
         ]);
 
         // Récupérer le fichier image depuis la requête

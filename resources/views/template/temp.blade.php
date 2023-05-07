@@ -14,7 +14,7 @@
 			{{-- spécifie les mots clés liés au contenu du site pour les moteurs de recherche. --}}
 			<meta name="keywords" content="AI,IA,informatique,ITU,CedricRandriamanjaka">
 			{{-- indique le nom de l'auteur du contenu. --}}
-			<meta name="author" content="Cedric">
+			<meta name="author" content="ActuAi">
 			{{-- permet de spécifier si les robots des moteurs de recherche doivent indexer et suivre le site. --}}
 			<meta name="robots" content="index, follow">
 			{{-- permet de spécifier si les robots des moteurs de recherche ne doivent pas indexer et suivre le site. --}}
@@ -22,11 +22,11 @@
 			{{-- ndique la fréquence à laquelle les moteurs de recherche doivent revisiter le site. --}}
 			{{-- <meta name="revisit-after" content="7 days"> --}}
 			{{-- spécifie le titre de l'article pour les réseaux sociaux. --}}
-			{{-- <meta name="og:title" content="titre de l'article"> --}}
+			<meta name="og:title" content="ActuAi">
 			{{-- spécifie la description de l'article pour les réseaux sociaux. --}}
-			{{-- <meta name="og:description" content="description de l'article"> --}}
+			<meta name="og:description" content="ActuAI">
 			{{-- spécifie l'image de l'article pour les réseaux sociaux. --}}
-			{{-- <meta name="og:image" content="url de l'image"> --}}
+			{{-- <meta name="og:image" content="@yield('image')"> --}}
 
 
 			<link href="{{ asset('assets/styles3.css') }}" rel="stylesheet" />

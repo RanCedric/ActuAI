@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $articles = Article::simplePaginate(5);
+        $articles = Article::orderBy('updated_at', 'desc')->simplePaginate(5);
         return view('welcome', compact('articles'));
     }
 

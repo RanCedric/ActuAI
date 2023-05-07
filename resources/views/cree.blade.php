@@ -31,11 +31,12 @@
                             <input class="form-control" id="titre" name="titre" required autofocus>
                             <label for="titre">Titre</label>
                         </div>
-                    
                         <div class="form-floating mb-3">
-                            <input type="file" class="form-control" id="image" name="image" accept="image/jpeg">
+                            <input type="file" class="form-control" id="image" name="image" accept="image/jpeg" required>
                         </div>
-
+                        <div class="alert alert-warning" role="alert">
+                            un image Jpeg,png de 4mo maximum
+                        </div>
                         <div class="form-floating mb-3">
                             <label for="">Contenu</label>
                             <textarea id="contenu" name="contenu" style="heigth:1000px;"></textarea>

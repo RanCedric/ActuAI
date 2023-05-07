@@ -39,9 +39,10 @@ class AuteurController extends Controller
     public function showAccueil(Request $request)
 {
     $auteur = $request->session()->get('auteur');
-    $articles = Article::where('auteur_id', $auteur->id)->simplePaginate(5);
+    $articles = Article::where('auteur_id', $auteur->id)->latest('updated_at')->simplePaginate(5);
 
     return view('acceuilAuteur', ['articles' => $articles]);
 }
+
 
 }

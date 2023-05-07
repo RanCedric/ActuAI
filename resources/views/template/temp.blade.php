@@ -3,6 +3,30 @@
 	<!DOCTYPE html>
 	<html lang="en">
 		<head>
+			{{-- : indique l'encodage de caractères utilisé sur la page. --}}
+			<meta charset="UTF-8">
+			{{-- permet de définir le viewport (zone d'affichage) pour les appareils mobiles. --}}
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			{{-- décrit brièvement le contenu du site pour les moteurs de recherche. --}}
+			<meta name="description" content="Nous sommes Actu-AI, un site web d'actualités sur l'intelligence artificielle. Notre mission est de fournir des informations précises et à jour sur les dernières avancées de l'IA.">
+			{{-- spécifie les mots clés liés au contenu du site pour les moteurs de recherche. --}}
+			<meta name="keywords" content="AI,IA,informatique,ITU,CedricRandriamanjaka">
+			{{-- indique le nom de l'auteur du contenu. --}}
+			<meta name="author" content="Cedric">
+			{{-- permet de spécifier si les robots des moteurs de recherche doivent indexer et suivre le site. --}}
+			<meta name="robots" content="index, follow">
+			{{-- permet de spécifier si les robots des moteurs de recherche ne doivent pas indexer et suivre le site. --}}
+			{{-- <meta name="robots" content="noindex, nofollow"> --}}
+			{{-- ndique la fréquence à laquelle les moteurs de recherche doivent revisiter le site. --}}
+			{{-- <meta name="revisit-after" content="7 days"> --}}
+			{{-- spécifie le titre de l'article pour les réseaux sociaux. --}}
+			{{-- <meta name="og:title" content="titre de l'article"> --}}
+			{{-- spécifie la description de l'article pour les réseaux sociaux. --}}
+			{{-- <meta name="og:description" content="description de l'article"> --}}
+			{{-- spécifie l'image de l'article pour les réseaux sociaux. --}}
+			{{-- <meta name="og:image" content="url de l'image"> --}}
+
+
 			<link href="{{ asset('assets/styles3.css') }}" rel="stylesheet" />
 			<link href="{{ secure_asset('assets/styles3.css') }}" rel="stylesheet" />
 			<link rel="icon" type="image/png" href="{{ secure_asset('ioicone.png') }}">

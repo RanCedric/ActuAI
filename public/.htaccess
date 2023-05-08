@@ -18,4 +18,9 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    # Set Cache Control for static assets
+    <FilesMatch "\.(css|js|svg|gif|png|jpe?g|ico)$">
+    Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
 </IfModule>

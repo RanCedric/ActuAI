@@ -17,6 +17,9 @@ class HomeController extends Controller
         $articles = Cache::remember($key, $minutes, function () {
             return Article::orderBy('updated_at', 'desc')->simplePaginate(5);
         });
+
+        // a utiliser si local
+        // $articles = Article::orderBy('updated_at', 'desc')->simplePaginate(5);
         return view('welcome', compact('articles'));
     }
 

@@ -31,7 +31,7 @@ class HomeController extends Controller
 
         if ($query) {
             $articles = Cache::remember($key, $minutes, function () use ($query) {
-                return Article::where('title', 'like', '%'.$query.'%')->orWhere('content', 'like', '%'.$query.'%')
+                return Article::where('titre', 'like', '%'.$query.'%')->orWhere('contenu', 'like', '%'.$query.'%')
                     ->orderBy('updated_at', 'desc')->simplePaginate(5);
             });
         } else {

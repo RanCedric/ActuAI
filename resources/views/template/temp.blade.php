@@ -29,13 +29,9 @@
 			{{-- <meta name="og:image" content="@yield('image')"> --}}
 
 
-			<link href="{{ asset('assets/styles3.css') }}" rel="stylesheet" />
 			<link href="{{ secure_asset('assets/styles3.css') }}" rel="stylesheet" />
 			<link rel="icon" type="image/png" href="{{ secure_asset('ioicone.png') }}">
-			<link rel="icon" type="image/png" href="{{ asset('ioicone.png') }}">
 
-			<script src="{{ asset('ckeditor.js') }}"></script>
-			<script src="{{ secure_asset('ckeditor.js') }}"></script>
 			<title>ActuAI - @yield('titre')</title>
 		</head>
 		<body>
@@ -78,7 +74,6 @@
 			</footer>
 			
 			<!-- Core theme JS-->
-			<script src="{{ asset('assets/scripts.js') }}"></script>
 			<script src="{{ secure_asset('assets/scripts.js') }}"></script>
 		</body>
 	</html>

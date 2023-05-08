@@ -59,13 +59,4 @@
     </div>
 </div>
 
-            
-                    
-{{-- 
-<form action="{{ route('image') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-<input type="file" name="image">
-<input type="submit" value="Envoyer">
-</form> --}}
-
 @endsection

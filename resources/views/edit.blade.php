@@ -5,7 +5,7 @@
 @extends('template.temp') 
 @section('titre', 'Edit') @section('BODY')
   
-<script src="{{ asset('ckeditor.js') }}"></script>
+<script src="{{ secure_asset('ckeditor.js') }}"></script>
 
 <!-- Page Header-->
 <header class="masthead" style="background-image: url('{{ asset(route('article.image', ['id' => $article->id])) }}')">

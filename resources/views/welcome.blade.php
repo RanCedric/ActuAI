@@ -22,6 +22,10 @@
                 <div class="site-heading">
                     <h1>Actu-Ai</h1>
                     <span class="subheading">Découvrez le monde de l'intelligence artificielle avec nous.</span>
+                    <form action="{{ route('search') }}" method="GET" class="d-flex mt-4">
+                        <input type="text" name="query" class="form-control me-2" placeholder="Rechercher un article...">
+                        <button type="submit" class="btn btn-primary">Rechercher</button>
+                    </form>
                 </div>
             </div>
         </div>

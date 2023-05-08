@@ -37,3 +37,5 @@ Route::get('/articles/image/{id}', [ArticleController::class, 'afficherImage'])-
         return view('cree');
     })->name('creerArticle')->middleware('auteur');
     Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('deleteArticle')->middleware('auteur');
+
+Route::get('/search', [ArticleController::class, 'search'])->name('search');

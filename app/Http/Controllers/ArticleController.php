@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ArticleController extends Controller
 {
@@ -34,6 +35,7 @@ class ArticleController extends Controller
 
         $article->save();
         //echo '<img src="data:'.$article->image_type.';base64,'.$article->image.'">';
+        Cache::forget('articles.' . 1);
         return redirect('/accueil-auteur')->with('success', 'L\'article a été créé avec succès.');
     }
 
@@ -58,7 +60,7 @@ public function update(Request $request, $id)
     $article->titre = $request->titre;
     $article->contenu = $request->contenu;
     $article->save();
-
+    Cache::forget('articles.' . 1);
     return redirect()->route('acceuilAuteur')->with('success', 'Article mis à jour avec succès');
 }
 
